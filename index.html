@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="database/server.js" type="text/javascript" type="module"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <form onsubmit="submitForm(); return false;">
+        <h1>Thundermist Health Center - Woonsocket SBHC Patient Registration</h1>
+        <h2>SECTION A: PATIENT INFORMATION</h2>
+        <p>Please complete for your child.</p>
+        <label for="last_name">Patient Last Name:</label>
+        <input type="text" id="last_name" name="last_name"><br>
+        <label for="first_name">Patient First Name:</label>
+        <input type="text" id="first_name" name="first_name"><br>
+        <label for="middle_initial">Middle Initial:</label>
+        <input type="text" id="middle_initial" name="middle_initial"><br>
+        <label for="preferred_name">Preferred Name:</label>
+        <input type="text" id="preferred_name" name="preferred_name"><br>
+        <label for="pronouns">Pronouns:</label>
+        <input type="text" id="pronouns" name="pronouns"><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" placeholder="Street"><br>
+        <input type="text" id="city" name="city" placeholder="City/State">
+        <input type="text" id="zip" name="zip" placeholder="Zip Code"><br>
+        <label for="home_phone">Home Phone:</label>
+        <input type="text" id="home_phone" name="home_phone"><br>
+        <label for="cell_phone">Cell Phone:</label>
+        <input type="text" id="cell_phone" name="cell_phone"><br>
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" name="dob"><br>
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age"><br>
+        <label for="ssn">SSN#:</label>
+        <input type="text" id="ssn" name="ssn"><br>
+        <label for="patient_email">Patient Email:</label>
+        <input type="text" id="patient_email" name="patient_email"><br>
+        <label for="parent_email">Parent/Guardian Email:</label>
+        <input type="text" id="parent_email" name="parent_email"><br>
+        <label>Emergency Contact:</label><br>
+        <label for="emergency_name">Name:</label>
+        <input type="text" id="emergency_name" name="emergency_name"><br>
+        <label for="emergency_phone">Phone:</label>
+        <input type="text" id="emergency_phone" name="emergency_phone"><br>
+        <label for="emergency_relation">Relationship to Patient:</label>
+        <input type="text" id="emergency_relation" name="emergency_relation"><br>
+       
+        <div>
+            <label>Primary Care Provider's Name:</label>
+            <input type="text" name="primary_care_provider_name">
+            <br>
+            <label>Primary Care Provider's Phone Number:</label>
+            <input type="text" name="primary_care_provider_phone">
+            <br>
+            <label>Pharmacy Name:</label>
+            <input type="text" name="pharmacy_name">
+            <br>
+            <label>Pharmacy Address:</label>
+            <input type="text" name="pharmacy_address">
+            <br>
+            <label>Regular Dentist Name:</label>
+            <input type="text" name="dentist_name">
+            <br>
+          </div>
+          <div>
+            <label>Sex:</label>
+            <input type="checkbox" name="sex" value="male"> Male
+            <input type="checkbox" name="sex" value="female"> Female
+            <input type="checkbox" name="sex" value="other"> Other
+            <br>
+            <label>Gender:</label>
+            <input type="checkbox" name="gender" value="boy"> Boy
+            <input type="checkbox" name="gender" value="girl"> Girl
+            <input type="checkbox" name="gender" value="transgender"> Transgender
+            <input type="checkbox" name="gender" value="other"> Other
+            <br>
+            <label>Does your child have any allergies?</label>
+            <input type="checkbox" name="allergies" value="yes"> Yes
+            <input type="checkbox" name="allergies" value="no"> No
+            <br>
+            <label>If yes, please specify:</label>
+            <input type="text" name="allergies_specify">
+            <br>
+            <label>Does your child take any medication?</label>
+            <input type="checkbox" name="medication" value="yes"> Yes
+            <input type="checkbox" name="medication" value="no"> No
+            <br>
+            <label>If yes, please specify:</label>
+            <input type="text" name="medication_specify">
+            <br>
+            <label>Does your child have any health problems?</label>
+            <input type="checkbox" name="health_problems" value="yes"> Yes
+            <input type="checkbox" name="health_problems" value="no"> No
+            <br>
+            <label>If yes, please specify:</label>
+            <input type="text" name="health_problems_specify">
+            <br>
+            <label>Has your child had any reactions to medication?</label>
+            <input type="checkbox" name="reaction_to_medication" value="yes"> Yes
+            <input type="checkbox" name="reaction_to_medication" value="no"> No
+            <br>
+            <label>If yes, please specify:</label>
+            <input type="text" name="reaction_to_medication_specify">
+            <br>
+            <div class="form-group">
+                <label for="special-needs">Please list any special needs your child has (physical, emotional, cultural, religious, or learning styles/preferences):</label>
+                <textarea class="form-control" id="special-needs"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Medical services:</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="medical-services-yes" name="medical-services" value="yes">
+                    <label class="form-check-label" for="medical-services-yes">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="medical-services-no" name="medical-services" value="no">
+                    <label class="form-check-label" for="medical-services-no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Nutritional counseling:</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="nutritional-counseling-yes" name="nutritional-counseling" value="yes">
+                    <label class="form-check-label" for="nutritional-counseling-yes">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="nutritional-counseling-no" name="nutritional-counseling" value="no">
+                    <label class="form-check-label" for="nutritional-counseling-no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Behavioral health:</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="behavioral-health-yes" name="behavioral-health" value="yes">
+                    <label class="form-check-label" for="behavioral-health-yes">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="behavioral-health-no" name="behavioral-health" value="no">
+                    <label class="form-check-label" for="behavioral-health-no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Dental:</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="dental-yes" name="dental" value="yes">
+                    <label class="form-check-label" for="dental-yes">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="dental-no" name="dental" value="no">
+                    <label class="form-check-label" for="dental-no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Birth Control:</label>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="birth-control-yes" name="birth-control" value="yes">
+                  <label class="form-check-label" for="birth-control-yes">Yes</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="birth-control-no" name="birth-control" value="no">
+                  <label class="form-check-label" for="birth-control-no">No</label>
+                </div>
+            </div>
+            
+            <p>If you marked "Yes" to Dental previously, your child will automatically be scheduled to receive an examination, cleaning,fluoride treatment, x-rays, and sealants if required. You must fill out the following information if you want your child to receive dental services.</p>
+                    
+                    <div>
+                      <label for="asthma">Asthma</label>
+                      <input type="checkbox" id="asthma" name="asthma" value="yes">
+                    </div>
+                    
+                    <div>
+                      <label for="seizure">Seizure/Epilepsy</label>
+                      <input type="checkbox" id="seizure" name="seizure" value="yes">
+                    </div>
+                    
+                    <div>
+                      <label for="mental_health">Mental Health/Behavioral issues</label>
+                      <input type="checkbox" id="mental_health" name="mental_health" value="yes">
+                    </div>
+                    
+                    <div>
+                      <label for="diabetes">Diabetes</label>
+                      <input type="checkbox" id="diabetes" name="diabetes" value="yes">
+                    </div>
+                    
+                    <div>
+                      <label for="bleeding_disorder">Bleeding Disorder</label>
+                      <input type="checkbox" id="bleeding_disorder" name="bleeding_disorder" value="yes">
+                    </div>
+                    <div>
+                      <label for="heart_valve_replacement">Heart Valve Replacement</label>
+                      <input type="checkbox" id="heart_valve_replacement" name="heart_valve_replacement" value="yes">
+                    </div>
+        <h2>SECTION B: FAMILY INFORMATION</h2>
+        <p>Please complete below for the custodial parent/guardian</p>
+
+            <label for="parent-guardian">Parent/Guardian</label>
+            <input type="text" id="parent-guardian" name="parent-guardian">
+
+            <label for="ssn">SSN#</label>
+            <input type="text" id="ssn" name="ssn">
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address">
+
+            <label for="dob">DOB</label>
+            <input type="date" id="dob" name="dob">
+
+            <label for="home-phone">Home Phone Number</label>
+            <input type="tel" id="home-phone" name="home-phone">
+
+            <label for="work-phone">Work Phone Number</label>
+            <input type="tel" id="work-phone" name="work-phone">
+
+            <label for="cell-number">Cell Number</label>
+            <input type="tel" id="cell-number" name="cell-number">
+
+            <label for="employer">Employer</label>
+            <input type="text" id="employer" name="employer">
+        
+            
+        <section id="sectionC">
+            <h2>SECTION C: CONSENT AND SIGNATURE</h2>
+            <p>Please sign below. Parent/Guardian must sign for minor children.</p>
+            <p>ALL PATIENTS: This Section must be completely filled out for you/your child to receive services at the Health Hut and/or at Thundermist Health Center. I certify that I am presenting myself/my child for services provided by Thundermist. I give Thundermist and its staff my permission to: (a) use any information contained in my (my child’s) records in order to process requests for payment from my medical or dental insurance company; and (b) disclose any information contained in my (my child’s) records to representatives from the Woonsocket Education Department for the purposes of scheduling services or coordinating care. I also give the Woonsocket Education Department permission to share my/my child’s relevant information with Thundermist. Thundermist will maintain strict confidentiality with regards to all information about me/my child, according to all applicable State and Federal laws, and Thundermist policies. I understand that my/my child’s medical records are the property of Thundermist and will not be released without my express written consent except in those circumstances permitted by law or to the Woonsocket Education Department as provided above. I have received a copy of the Health Hut Patient Handbook which includes Patient Rights and Responsibilities. I understand that I may ask staff for assistance if I have any questions about these policies. I understand that a copy of a visit note will be provided to my/my child’s primary care provider when seen for medical services and may be provided to my/my child’s dentist when seen for dental services. I hereby acknowledge that I have received a copy of Thundermist Health Center’s Notice of Privacy Practices. I authorize Thundermist staff to provide me (my child) reasonable and proper care by today’s standards.</p>
+            <p>A copy of the signature below is as valid as the original and remains in effect until my child is no longer enrolled as a student in the Woonsocket school system.</p>
+            <div class="field-container">
+                <label for="signature">Name (if 18 years old or older):</label>
+                <input type="text" id="signature" name="signature" required>
+            </div>
+            <div class="field-container">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            
+            <input type="submit" class="button" value="Submit">
+        </section>
+       
+    </form>  
+    <script>
+        $.ajax({
+            type: 'GET',
+            url: 'database/server.js',
+            success: function(data) {
+                console.log('Success:', data);
+                // Display data on the page as desired
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+
+    </script> 
+</body>
+</html>
