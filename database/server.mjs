@@ -1,13 +1,13 @@
 import express from 'express';
 import cors from 'cors';
-import {  connect, Schema, model } from 'mongoose';
-import { json } from 'body-parser';
+import { connect, Schema, model } from 'mongoose';
+import bodyParser from 'body-parser';
+const { json } = bodyParser;
+
 
 const port = process.env.PORT || 5000;
 
 const app = express();
-
-mongoose.set('strictQuery', true);
 
 // Enable parsing of JSON requests
 app.use(json());
@@ -16,7 +16,7 @@ app.use(json());
 app.use(cors());
 
 // Connect to the MongoDB database
-connect('mongodb+srv://brysongulley25:Brysongulley2@cluster0.m33mioj.mongodb.net/test', { useNewUrlParser: true });
+connect('mongodb+srv://brysongulley25:Birdie2555@cluster0.m33mioj.mongodb.net/form?retryWrites=true&w=majority', { useNewUrlParser: true });
 
 // Define a Mongoose schema
 const dataSchema = new Schema({
@@ -27,19 +27,19 @@ const dataSchema = new Schema({
     pronouns: String,
     address: String,
     city: String,
-    zip: String,
-    home_phone: String,
-    cell_phone: String,
-    dob: String,
-    age: String,
-    ssn: String,
+    zip: Number, // Updated from String to Number
+    home_phone: Number, // Updated from String to Number
+    cell_phone: Number, // Updated from String to Number
+    dob: Date, // Updated from String to Date
+    age: Number, // Updated from String to Number
+    ssn: Number, // Updated from String to Number
     patient_email: String,
     parent_email: String,
     emergency_name: String,
-    emergency_phone: String,
+    emergency_phone: Number,
     emergency_relation: String,
     primary_care_provider_name: String,
-    primary_care_provider_phone: String,
+    primary_care_provider_phone: Number,
     pharmacy_name: String,
     pharmacy_address: String,
     dentist_name: String,
@@ -55,8 +55,7 @@ app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });
 
-
-app.post('database/server.js', (req, res) => {
+app.post('/data', (req, res) => {
     const data = new Data({
         last_name: req.body.last_name,
         first_name: req.body.first_name,
@@ -83,13 +82,11 @@ app.post('database/server.js', (req, res) => {
         dentist_name: req.body.dentist_name,
         sex: req.body.sex,
         gender: req.body.gender,
-        allergies: req.body.allergies,
-       
+        allergies: req.body.allergies
     });
-    res.send('POST request received');
+
     // Save the data to the database
     data.save()
         .then(() => res.send('Data saved successfully'))
         .catch(err => res.status(400).send(err));
 });
-

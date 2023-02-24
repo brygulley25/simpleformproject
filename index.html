@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="database/server.js" type="text/javascript" type="module"></script>
-    <script src="index.js"></script>
+    <script src="database/server.mjs" type="text/javascript" type="module"></script>
+    
 </head>
 <body>
-    <form onsubmit="submitForm(); return false;">
+    <form onsubmit="submitForm(); return false;" class="form-container">
         <h1>Thundermist Health Center - Woonsocket SBHC Patient Registration</h1>
         <h2>SECTION A: PATIENT INFORMATION</h2>
         <p>Please complete for your child.</p>
@@ -24,44 +24,64 @@
         <input type="text" id="preferred_name" name="preferred_name"><br>
         <label for="pronouns">Pronouns:</label>
         <input type="text" id="pronouns" name="pronouns"><br>
+
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" placeholder="Street"><br>
         <input type="text" id="city" name="city" placeholder="City/State">
-        <input type="text" id="zip" name="zip" placeholder="Zip Code"><br>
+        <input type="text" id="zip" name="zip" placeholder="Zip Code" pattern="[0-9]{5}" required><br>
+
         <label for="home_phone">Home Phone:</label>
-        <input type="text" id="home_phone" name="home_phone"><br>
+        <input type="tel" id="home_phone" name="home_phone" pattern="[0-9]{10}" placeholder="1234567890" required><br>
+
         <label for="cell_phone">Cell Phone:</label>
-        <input type="text" id="cell_phone" name="cell_phone"><br>
+        <input type="tel" id="cell_phone" name="cell_phone" pattern="[0-9]{10}" placeholder="1234567890" required><br>
+
         <label for="dob">Date of Birth:</label>
-        <input type="text" id="dob" name="dob"><br>
-        <label for="age">Age:</label>
-        <input type="text" id="age" name="age"><br>
+        <input type="date" id="dob" name="dob" max="2015-12-31" min="1920-01-01" pattern="[0-9]{8}" placeholder="YYYYMMDD" required>
+
+        <label for="age">Age :</label>
+        <input type="number" id="age" name="age" min="1" max="99" required><br>
+        
+
+
         <label for="ssn">SSN#:</label>
-        <input type="text" id="ssn" name="ssn"><br>
+        <input type="text" id="ssn" name="ssn" pattern="[0-9]{9}" maxlength="9" required><br>
+
         <label for="patient_email">Patient Email:</label>
-        <input type="text" id="patient_email" name="patient_email"><br>
+        <input type="email" id="patient_email" name="patient_email"><br>
         <label for="parent_email">Parent/Guardian Email:</label>
-        <input type="text" id="parent_email" name="parent_email"><br>
+        <input type="email" id="parent_email" name="parent_email"><br>
+
         <label>Emergency Contact:</label><br>
         <label for="emergency_name">Name:</label>
         <input type="text" id="emergency_name" name="emergency_name"><br>
         <label for="emergency_phone">Phone:</label>
-        <input type="text" id="emergency_phone" name="emergency_phone"><br>
+        <input type="text" id="emergency_phone" name="emergency_phone" pattern="[0-9]{10}" placeholder="1234567890" required><br>
         <label for="emergency_relation">Relationship to Patient:</label>
-        <input type="text" id="emergency_relation" name="emergency_relation"><br>
+        <select id="emergency_relation" name="emergency_relation">
+            <option value="father">Father</option>
+            <option value="mother">Mother</option>
+            <option value="sister">Sister</option>
+            <option value="brother">Brother</option>
+            <option value="guardian">Guardian</option>
+            <option value="other">Other</option>
+        </select>
+
        
         <div>
             <label>Primary Care Provider's Name:</label>
             <input type="text" name="primary_care_provider_name">
             <br>
             <label>Primary Care Provider's Phone Number:</label>
-            <input type="text" name="primary_care_provider_phone">
+            <input type="text" name="primary_care_provider_phone" pattern="[0-9]{10}" placeholder="1234567890" required>
             <br>
             <label>Pharmacy Name:</label>
-            <input type="text" name="pharmacy_name">
+            <input type="text" name="pharmacy_name" required>
             <br>
             <label>Pharmacy Address:</label>
-            <input type="text" name="pharmacy_address">
+            <input type="text" id="address" name="pharmacy_address" placeholder="Street"><br>
+            <input type="text" id="city" name="city" placeholder="City/State">
+            <input type="text" id="zip" name="zip" placeholder="Zip Code" pattern="[0-9]{5}" required><br>
             <br>
             <label>Regular Dentist Name:</label>
             <input type="text" name="dentist_name">
@@ -69,157 +89,168 @@
           </div>
           <div>
             <label>Sex:</label>
-            <input type="checkbox" name="sex" value="male"> Male
-            <input type="checkbox" name="sex" value="female"> Female
-            <input type="checkbox" name="sex" value="other"> Other
+            <input type="radio" name="sex" value="male"> Male
+            <input type="radio" name="sex" value="female"> Female
+            <input type="radio" name="sex" value="other"> Other
             <br>
             <label>Gender:</label>
-            <input type="checkbox" name="gender" value="boy"> Boy
-            <input type="checkbox" name="gender" value="girl"> Girl
-            <input type="checkbox" name="gender" value="transgender"> Transgender
-            <input type="checkbox" name="gender" value="other"> Other
+            <input type="radio" name="gender" value="boy"> Boy
+            <input type="radio" name="gender" value="girl"> Girl
+            <input type="radio" name="gender" value="transgender"> Transgender
+            <input type="radio" name="gender" value="other"> Other
             <br>
+
             <label>Does your child have any allergies?</label>
-            <input type="checkbox" name="allergies" value="yes"> Yes
-            <input type="checkbox" name="allergies" value="no"> No
+            <input type="radio" name="allergies" value="yes"> Yes
+            <input type="radio" name="allergies" value="no"> No
             <br>
             <label>If yes, please specify:</label>
             <input type="text" name="allergies_specify">
             <br>
+
             <label>Does your child take any medication?</label>
-            <input type="checkbox" name="medication" value="yes"> Yes
-            <input type="checkbox" name="medication" value="no"> No
+            <input type="radio" name="medication" value="yes"> Yes
+            <input type="radio" name="medication" value="no"> No
             <br>
             <label>If yes, please specify:</label>
             <input type="text" name="medication_specify">
             <br>
+
             <label>Does your child have any health problems?</label>
-            <input type="checkbox" name="health_problems" value="yes"> Yes
-            <input type="checkbox" name="health_problems" value="no"> No
+            <input type="radio" name="health_problems" value="yes"> Yes
+            <input type="radio" name="health_problems" value="no"> No
             <br>
             <label>If yes, please specify:</label>
             <input type="text" name="health_problems_specify">
             <br>
+
             <label>Has your child had any reactions to medication?</label>
-            <input type="checkbox" name="reaction_to_medication" value="yes"> Yes
-            <input type="checkbox" name="reaction_to_medication" value="no"> No
+            <input type="radio" name="reaction_to_medication" value="yes"> Yes
+            <input type="radio" name="reaction_to_medication" value="no"> No
             <br>
             <label>If yes, please specify:</label>
             <input type="text" name="reaction_to_medication_specify">
             <br>
+
             <div class="form-group">
                 <label for="special-needs">Please list any special needs your child has (physical, emotional, cultural, religious, or learning styles/preferences):</label>
                 <textarea class="form-control" id="special-needs"></textarea>
-            </div>
-            <div class="form-group">
+              </div>
+              
+              <div class="form-group">
                 <label>Medical services:</label>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="medical-services-yes" name="medical-services" value="yes">
-                    <label class="form-check-label" for="medical-services-yes">Yes</label>
+                  <input type="radio" class="form-check-input" id="medical-services-yes" name="medical-services" value="yes">
+                  <label class="form-check-label" for="medical-services-yes">Yes</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="medical-services-no" name="medical-services" value="no">
-                    <label class="form-check-label" for="medical-services-no">No</label>
+                  <input type="radio" class="form-check-input" id="medical-services-no" name="medical-services" value="no" checked>
+                  <label class="form-check-label" for="medical-services-no">No</label>
                 </div>
-            </div>
-            <div class="form-group">
+              </div>
+              
+              <div class="form-group">
                 <label>Nutritional counseling:</label>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="nutritional-counseling-yes" name="nutritional-counseling" value="yes">
-                    <label class="form-check-label" for="nutritional-counseling-yes">Yes</label>
+                  <input type="radio" class="form-check-input" id="nutritional-counseling-yes" name="nutritional-counseling" value="yes">
+                  <label class="form-check-label" for="nutritional-counseling-yes">Yes</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="nutritional-counseling-no" name="nutritional-counseling" value="no">
-                    <label class="form-check-label" for="nutritional-counseling-no">No</label>
+                  <input type="radio" class="form-check-input" id="nutritional-counseling-no" name="nutritional-counseling" value="no" checked>
+                  <label class="form-check-label" for="nutritional-counseling-no">No</label>
                 </div>
-            </div>
-            <div class="form-group">
+              </div>
+              
+              <div class="form-group">
                 <label>Behavioral health:</label>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="behavioral-health-yes" name="behavioral-health" value="yes">
-                    <label class="form-check-label" for="behavioral-health-yes">Yes</label>
+                  <input type="radio" class="form-check-input" id="behavioral-health-yes" name="behavioral-health" value="yes">
+                  <label class="form-check-label" for="behavioral-health-yes">Yes</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="behavioral-health-no" name="behavioral-health" value="no">
-                    <label class="form-check-label" for="behavioral-health-no">No</label>
+                  <input type="radio" class="form-check-input" id="behavioral-health-no" name="behavioral-health" value="no" checked>
+                  <label class="form-check-label" for="behavioral-health-no">No</label>
                 </div>
-            </div>
-            <div class="form-group">
+              </div>
+              
+              <div class="form-group">
                 <label>Dental:</label>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="dental-yes" name="dental" value="yes">
-                    <label class="form-check-label" for="dental-yes">Yes</label>
+                  <input type="radio" class="form-check-input" id="dental-yes" name="dental" value="yes">
+                  <label class="form-check-label" for="dental-yes">Yes</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="dental-no" name="dental" value="no">
-                    <label class="form-check-label" for="dental-no">No</label>
+                  <input type="radio" class="form-check-input" id="dental-no" name="dental" value="no" checked>
+                  <label class="form-check-label" for="dental-no">No</label>
                 </div>
-            </div>
-            <div class="form-group">
+              </div>
+              
+              <div class="form-group">
                 <label>Birth Control:</label>
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="birth-control-yes" name="birth-control" value="yes">
-                  <label class="form-check-label" for="birth-control-yes">Yes</label>
+                    <input type="radio" class="form-check-input" id="birth-control-yes" name="birth-control" value="yes">
+                    <label class="form-check-label" for="birth-control-yes">Yes</label>
                 </div>
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="birth-control-no" name="birth-control" value="no">
-                  <label class="form-check-label" for="birth-control-no">No</label>
+                    <input type="radio" class="form-check-input" id="birth-control-no" name="birth-control" value="no">
+                    <label class="form-check-label" for="birth-control-no">No</label>
                 </div>
             </div>
             
             <p>If you marked "Yes" to Dental previously, your child will automatically be scheduled to receive an examination, cleaning,fluoride treatment, x-rays, and sealants if required. You must fill out the following information if you want your child to receive dental services.</p>
-                    
-                    <div>
-                      <label for="asthma">Asthma</label>
-                      <input type="checkbox" id="asthma" name="asthma" value="yes">
-                    </div>
-                    
-                    <div>
-                      <label for="seizure">Seizure/Epilepsy</label>
-                      <input type="checkbox" id="seizure" name="seizure" value="yes">
-                    </div>
-                    
-                    <div>
-                      <label for="mental_health">Mental Health/Behavioral issues</label>
-                      <input type="checkbox" id="mental_health" name="mental_health" value="yes">
-                    </div>
-                    
-                    <div>
-                      <label for="diabetes">Diabetes</label>
-                      <input type="checkbox" id="diabetes" name="diabetes" value="yes">
-                    </div>
-                    
-                    <div>
-                      <label for="bleeding_disorder">Bleeding Disorder</label>
-                      <input type="checkbox" id="bleeding_disorder" name="bleeding_disorder" value="yes">
-                    </div>
-                    <div>
-                      <label for="heart_valve_replacement">Heart Valve Replacement</label>
-                      <input type="checkbox" id="heart_valve_replacement" name="heart_valve_replacement" value="yes">
-                    </div>
+            
+            <div class="form-group">
+                <label>Health Issues:</label>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="asthma" name="health-issue" value="asthma">
+                    <label class="form-check-label" for="asthma">Asthma</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="seizure" name="health-issue" value="seizure">
+                    <label class="form-check-label" for="seizure">Seizure/Epilepsy</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="mental_health" name="health-issue" value="mental_health">
+                    <label class="form-check-label" for="mental_health">Mental Health/Behavioral issues</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="diabetes" name="health-issue" value="diabetes">
+                    <label class="form-check-label" for="diabetes">Diabetes</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="bleeding_disorder" name="health-issue" value="bleeding_disorder">
+                    <label class="form-check-label" for="bleeding_disorder">Bleeding Disorder</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="heart_valve_replacement" name="health-issue" value="heart_valve_replacement">
+                    <label class="form-check-label" for="heart_valve_replacement">Heart Valve Replacement</label>
+                </div>
+            </div>
+            
         <h2>SECTION B: FAMILY INFORMATION</h2>
         <p>Please complete below for the custodial parent/guardian</p>
 
             <label for="parent-guardian">Parent/Guardian</label>
             <input type="text" id="parent-guardian" name="parent-guardian">
 
-            <label for="ssn">SSN#</label>
-            <input type="text" id="ssn" name="ssn">
+            <label for="ssn">Social Security Number (SSN)</label>
+            <input type="text" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" required placeholder="123-45-6789">
 
-            <label for="address">Address</label>
-            <input type="text" id="address" name="address">
+            <input type="text" id="address" name="address" placeholder="Street"><br>
+            <input type="text" id="city" name="city" placeholder="City/State">
+            <input type="text" id="zip" name="zip" placeholder="Zip Code" pattern="[0-9]{5}" required><br>
 
-            <label for="dob">DOB</label>
-            <input type="date" id="dob" name="dob">
+            <label for="dob">Date of Birth (DOB)</label>
+            <input type="date" id="dob" name="dob" max="2015-12-31" min="1920-01-01" pattern="[0-9]{8}" placeholder="YYYYMMDD" required>
 
             <label for="home-phone">Home Phone Number</label>
-            <input type="tel" id="home-phone" name="home-phone">
+            <input type="tel" id="home-phone" name="home-phone" pattern="\d{3}-\d{3}-\d{4}" required placeholder="123-456-7890">
 
             <label for="work-phone">Work Phone Number</label>
-            <input type="tel" id="work-phone" name="work-phone">
+            <input type="tel" id="work-phone" name="work-phone" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890">
 
             <label for="cell-number">Cell Number</label>
-            <input type="tel" id="cell-number" name="cell-number">
+            <input type="tel" id="cell-number" name="cell-number" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890">
 
             <label for="employer">Employer</label>
             <input type="text" id="employer" name="employer">
@@ -246,7 +277,7 @@
     <script>
         $.ajax({
             type: 'GET',
-            url: 'database/server.js',
+            url: 'database/server.mjs',
             success: function(data) {
                 console.log('Success:', data);
                 // Display data on the page as desired
